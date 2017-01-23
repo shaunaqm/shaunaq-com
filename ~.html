@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="description" content="NA">
+	<meta name="viewport" content="width=device-width, height=device-height">
+	<title>~</title>
+
+<style>
+	html{
+	height:100%;
+	box-sizing: border-box;
+	}
+	body{
+		box-sizing: border-box;
+		margin:0px;
+		padding: 13px;
+		padding-bottom: 89px;
+		height: 100%;
+		background-color: #000000;
+	}
+	header{		
+		display: inline-block;
+		margin-right: 13px;
+		margin-bottom: 13px;
+		margin-top: 0px;
+		margin-left: 0px;
+		font-family: Monaco, Menlo, monospace;
+		color: #FFFFFF;
+		font-size: 13px;
+		font-weight: lighter;
+		letter-spacing: 0px;
+		line-height: 1;
+		vertical-align: top;
+	}
+	p{		
+		display: block;
+		margin-right: 13px;
+		margin-bottom: 13px;
+		margin-top: 8px;
+		margin-left: 0px;
+		font-family: Monaco, Menlo, monospace;
+		color: #FFFFFF;
+		font-size: 8px;
+		font-weight: lighter;
+		letter-spacing: 0px;
+		line-height: 1;
+		vertical-align: top;
+	}
+	img{
+      	display: block;
+		max-width: 100%;
+      	max-height: 100%;
+      	height: auto;
+		width: auto;
+		vertical-align: top;
+		padding-bottom: 0px;
+		padding-right: 0px;
+		cursor: pointer;
+		}
+	video{
+		display: block;
+		margin: auto;
+		margin-top: 89px;
+		background-color: #111111;
+	}
+	button{
+		display: block;
+		margin: auto;
+		margin-top: 55px;
+	    background-color: #000000;
+		border: none;
+		font-family: Monaco, Menlo, monospace;
+		color: white;
+		padding: 13px;
+		text-align: center;
+		text-decoration: none;
+		font-size: 8px;
+		cursor: pointer;
+	}
+</style>
+</head>
+
+<body onload="init()">
+
+	<header>~</header>
+	<p>
+		1 channel 16 bit audio @ 48000 samples/second<br>
+		640x640 24 bit RGB video @ 30 frames/second<br>
+	</p>
+	
+	<video id="~" width="320" height="320">
+		<source src="~_low.mp4" type="video/mp4">
+		Your browser does not support the video tag.
+	</video>
+	<button id="play" onclick="playPause()"></button>
+	
+  	<footer></footer>
+  	
+  	<script>
+  		var video = document.getElementById("~");
+		function playPause(){ 
+			if (video.paused){
+				video.play();
+				document.getElementById("play").innerHTML = "pause ||";
+			}
+			else{
+				video.pause();
+				document.getElementById("play").innerHTML = "play >";
+			}
+		}
+		function init(){
+				document.getElementById("play").innerHTML = "play >";
+		}
+  	</script>
+
+</body>
+</html>
