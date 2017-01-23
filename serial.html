@@ -63,20 +63,6 @@
 		margin-top: 89px;
 		background-color: #111111;
 	}
-	button{
-		display: block;
-		margin: auto;
-		margin-top: 55px;
-	    	background-color: #000000;
-		border: none;
-		font-family: Monaco, Menlo, monospace;
-		color: white;
-		padding: 13px;
-		text-align: center;
-		text-decoration: none;
-		font-size: 8px;
-		cursor: pointer;
-	}
 </style>
 </head>
 
@@ -92,25 +78,13 @@
 		<source src="serial_web.mp4" type="video/mp4">
 		Your browser does not support the video tag.
 	</video>
-	<button id="play" onclick="playPause()"></button>
 	
   	<footer></footer>
   	
   	<script>
   		var video = document.getElementById("~");
-		function playPause(){ 
-			if (video.paused){
-				video.play();
-				document.getElementById("play").innerHTML = "pause ||";
-			}
-			else{
-				video.pause();
-				document.getElementById("play").innerHTML = "play >";
-			}
-		}
 		function init(){
 				video.controls = true;
-				document.getElementById("play").innerHTML = "play >";
 		}
   	</script>
 
