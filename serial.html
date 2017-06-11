@@ -40,7 +40,7 @@
 		margin-left: 0px;
 		font-family: Monaco, Menlo, monospace;
 		color: #FFFFFF;
-		font-size: 8px;
+		font-size: 11px;
 		font-weight: lighter;
 		letter-spacing: 0px;
 		line-height: 1;
@@ -63,6 +63,32 @@
 		margin-top: 89px;
 		background-color: #111111;
 	}
+	table{
+		background-color: #111111;
+		border: 1px solid #111111;
+		
+		border-collapse: collapse;
+		display: block;
+		width: 320px;
+		margin: auto;
+		margin-top: 13px;
+	}
+	td{
+
+		width: 320px;
+		padding-top: 8px;
+		padding-bottom: 8px;
+		padding-left: 3px;
+		font-family: Monaco, Menlo, monospace;
+		color: #FFFFFF;
+		font-size: 11px;
+		font-weight: lighter;
+		letter-spacing: 0px;
+		line-height: 1;
+	}
+	td:hover{
+		background-color: #555555!important;
+	}
 </style>
 </head>
 
@@ -72,14 +98,20 @@
 	<p>
 		1 channel 16 bit audio @ 48000 samples/second<br>
 		640x640 24 bit RGB video @ 30 frames/second<br>
-
-		new video
 	</p>
 	
 	<video id="~" width="320" height="320">
 		<source src="serial_web.mp4" type="video/mp4">
 		Your browser does not support the video tag.
 	</video>
+	<table>
+		<tr> 
+			<td id="v1" onclick="play(1)">first</td>
+		</tr>
+		<tr> 
+			<td id="v2" onclick="play(2)">second</td>
+		</tr>
+	</table>
 	
   	<footer></footer>
   	
@@ -87,6 +119,17 @@
   		var video = document.getElementById("~");
 		function init(){
 				video.controls = true;
+		}
+		function play(index) {
+    		if(index==1){
+    			v1.style.backgroundColor = '#333333';
+    			v2.style.backgroundColor = '#111111';
+    		}
+    		if(index==2){
+    			v1.style.backgroundColor = '#111111';
+    			v2.style.backgroundColor = '#333333';
+    		}
+    		
 		}
   	</script>
 
