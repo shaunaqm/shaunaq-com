@@ -15,7 +15,7 @@
 		margin:0px;
 		padding: 13px;
 		padding-bottom: 89px;
-		height: 100%;
+		
 		background-color: #000000;
 	}
 	header{		
@@ -39,7 +39,7 @@
 		margin-top: 8px;
 		margin-left: 0px;
 		font-family: Monaco, Menlo, monospace;
-		color: #FFFFFF;
+		color: #EEEEEE;
 		font-size: 11px;
 		font-weight: lighter;
 		letter-spacing: 0px;
@@ -58,20 +58,26 @@
 		cursor: pointer;
 		}
 	video{
+		max-width: 100%;
+		height: auto;
 		display: block;
 		margin: auto;
 		margin-top: 89px;
 		background-color: #111111;
 	}
 	table{
-		background-color: #111111;
-		border: 1px solid #111111;
+		background-color: #222222;
+		border: 1px solid #222222;
 		
 		border-collapse: collapse;
 		display: block;
-		width: 320px;
+		max-width: 320px;
+		
 		margin: auto;
-		margin-top: 13px;
+		margin-top: 0px;
+	}
+	tr{
+		height: 34px;
 	}
 	td{
 
@@ -80,7 +86,7 @@
 		padding-bottom: 8px;
 		padding-left: 3px;
 		font-family: Monaco, Menlo, monospace;
-		color: #FFFFFF;
+		color: #DDDDDD;
 		font-size: 11px;
 		font-weight: lighter;
 		letter-spacing: 0px;
@@ -100,7 +106,7 @@
 		640x640 24 bit RGB video @ 30 frames/second<br>
 	</p>
 	
-	<video id="~" width="320" height="320">
+	<video id="~">
 		<source src="serial_web.mp4" type="video/mp4">
 		Your browser does not support the video tag.
 	</video>
@@ -123,10 +129,10 @@
 		function play(index) {
     		if(index==1){
     			v1.style.backgroundColor = '#333333';
-    			v2.style.backgroundColor = '#111111';
+    			v2.style.backgroundColor = '#222222';
     		}
     		if(index==2){
-    			v1.style.backgroundColor = '#111111';
+    			v1.style.backgroundColor = '#222222';
     			v2.style.backgroundColor = '#333333';
     		}
     		
