@@ -7,18 +7,32 @@
 
 <style>
 	html{
-	height:100%;
+	height: 100%;
 	box-sizing: border-box;
 	}
+
 	body{
+		min-height: 100%;
 		box-sizing: border-box;
+		display: grid;
+		grid-template-columns: auto;
+		grid-template-rows: 24px 55px auto 1fr 89px;
+		grid-template-areas:
+		"header"
+		"p"
+		"video"
+		"table"
+		"footer";
+
 		margin:0px;
 		padding: 13px;
-		padding-bottom: 89px;
+		
+		
 		
 		background-color: #000000;
 	}
 	header{		
+		grid-area: header;
 		display: inline-block;
 		margin-right: 13px;
 		margin-bottom: 13px;
@@ -33,6 +47,7 @@
 		vertical-align: top;
 	}
 	p{		
+		grid-area: p;
 		display: block;
 		margin-right: 13px;
 		margin-bottom: 13px;
@@ -47,10 +62,10 @@
 		vertical-align: top;
 	}
 	img{
-      		display: block;
+      	display: block;
 		max-width: 100%;
-      		max-height: 100%;
-      		height: auto;
+      	max-height: 100%;
+      	height: auto;
 		width: auto;
 		vertical-align: top;
 		padding-bottom: 0px;
@@ -58,6 +73,7 @@
 		cursor: pointer;
 		}
 	video{
+		grid-area: video;
 		max-width: 100%;
 		height: auto;
 		display: block;
@@ -66,13 +82,11 @@
 		background-color: #111111;
 	}
 	table{
+		grid-area: table;
 		background-color: #222222;
-		border: 1px solid #222222;
-		
+		border-width: 0px;
 		border-collapse: collapse;
-		display: block;
-		max-width: 320px;
-		
+		max-width: 640px;
 		margin: auto;
 		margin-top: 0px;
 	}
@@ -81,7 +95,7 @@
 	}
 	td{
 
-		width: 320px;
+		width: 640px;
 		padding-top: 8px;
 		padding-bottom: 8px;
 		padding-left: 3px;
@@ -95,10 +109,21 @@
 	td:hover{
 		background-color: #555555!important;
 	}
+	footer {
+		grid-area: footer;
+		align-self: end;
+		
+		
+		
+    	font-family: monospace;
+    	color: #AAAAAA;
+    	font-size: 8px;
+	}
 </style>
 </head>
 
 <body onload="init()">
+
 
 	<header>~</header>
 	<p>
@@ -106,7 +131,7 @@
 		640x640 24 bit RGB video @ 30 frames/second<br>
 	</p>
 	
-	<video id="~">
+	<video id="video">
 		<source src="2566F380_web.mp4" type="video/mp4">
 		Your browser does not support the video tag.
 	</video>
@@ -119,19 +144,24 @@
 		</tr>
 	</table>
 	
-  	<footer></footer>
+	 <footer>
+  		This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
+  	</footer>
+
   	
   	<script>
-  		var video = document.getElementById("~");
+  		var video = document.getElementById("video");
 		function init(){
 				video.controls = true;
 		}
 		function play(index) {
     		if(index==1){
+    			video.src = "2566F380_web.mp4";
     			v1.style.backgroundColor = '#333333';
     			v2.style.backgroundColor = '#222222';
     		}
     		if(index==2){
+    			video.src = "DC033E00_web.mp4";
     			v1.style.backgroundColor = '#222222';
     			v2.style.backgroundColor = '#333333';
     		}
@@ -140,4 +170,5 @@
   	</script>
 
 </body>
+
 </html>
