@@ -8,7 +8,7 @@ function setup() {
 	canvas.parent('heading');
 
 	for (var i = 0; i<length; i++){
-		x[i] = width / 2;
+		x[i] = width / 5;
 		y[i] = height / 2;
 	}
 	frameRate(30);
