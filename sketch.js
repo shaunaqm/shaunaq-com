@@ -2,6 +2,9 @@ var length=1000;
 var rnd = 0.7;
 var x = [];
 var y = [];
+var r = 0;
+var g = 0;
+var b = 0;
 function setup() {
 
 	var canvas = createCanvas(512, 256);
@@ -40,7 +43,7 @@ x[length-1] = constrain(x[length-1], 0, width);
 y[length-1] = constrain(y[length-1], 0, height);
 
 for (var i = 1; i<length; i++){
-	stroke(255 - i/length*187);
+	stroke(0, 0, 0, i/length*187);
 	line(x[i-1],y[i-1],x[i],y[i]);
 }
 
