@@ -20,21 +20,18 @@ function setup() {
 		b[i] = 0;
 	}
 	frameRate(30);
-
 }
 
+
+	
 function draw() {
-	background(255);
+background(255);
 
-
-// rnd = sin(13*rnd);
 strokeWeight(0);
 textSize(7);
 fill(171);
 text(rnd, 0, 10);
 strokeWeight(1);
-
-
 
 for (var i = 1; i<length; i++){
 	x[i-1] = x[i];
