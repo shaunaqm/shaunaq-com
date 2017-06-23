@@ -32,15 +32,33 @@
 			display: block;
 			margin-right: 13px;
 			margin-bottom: 13px;
-			margin-top: 8px;
-			margin-left: 0px;
+			margin-top: 21px;
+			margin-left: 13px;
 			font-family: Monaco, Menlo, monospace;
-			color: #888888;
-			font-size: 8px;
+			color: #777777;
+			font-size: 11px;
 			font-weight: lighter;
 			letter-spacing: 0px;
 			line-height: 1;
 			vertical-align: top;
+		}
+		figure{
+			max-width: 100%;
+			margin: auto;
+			max-height: 768px;
+			overflow:hidden;
+		}
+		img{
+			display: block;
+			
+			margin: auto;
+			max-width: 100%;
+			height: auto;
+			overflow: hidden;
+			padding-bottom: 0px;
+			padding-right: 0px;
+			
+
 		}
 
 		ul{
@@ -49,6 +67,7 @@
 			padding: 0;
 			overflow: hidden;
 			background-color: #333333;
+			z-index: +1;
 		}
 		ul li {
 			
@@ -66,7 +85,7 @@
 			display: block;
 			color: white;
 			text-align: center;
-			padding: 14px 16px;
+			padding: 14px 14px;
 			text-decoration: none;
 			font-family: Monaco, Menlo, monospace;
 			font-size: 11px;
@@ -75,16 +94,9 @@
 			line-height: 1;
 			float:left;
 		}
-		a:hover:not(.active) {background-color: #CCCC33;}
+		a:hover:not(.active) {background-color: #DDBB22;}
 		li.heading {background-color: #22BBBB;}
 		
-/*		.items a{
-			visibility: hidden;
-		}*/
-/*		.heading:hover .items a{
-			visibility: visible;
-			background-color:#123456;
-		}*/
 		@media screen and (max-width: 600px){
 			a{
 				float: none;
@@ -97,10 +109,8 @@
 			}
 
 			ul li ul{
-			float: none;	
-			display: none;
+				float: none;	
 			}
-			ul li:hover ul {display: block;}
 		}
 	</style>
 </head>
@@ -108,21 +118,67 @@
 <body>
 
 	<nav>
-		<ul class="menu">
-			<li class="heading"><a class="active" href="#home">thinkinwords</a>
+		<ul id="menu">
+			<li class="heading"><a class="active" onclick="dropdown()" href="#home">thinkinwords</a>
 
-				<ul class="items">
-					<li><a href="#news">Blah</a></li>
-					<li><a href="#news">FAQ</a></li>
+				<ul id="items">
+					<li><a href="#home">Home</a></li>
+					<li><a href="#FAQ">FAQ</a></li>
 					<li><a href="#contact">Contact</a></li>
 					<li><a href="#about">About</a></li>
 				</ul>
 			</li>
 		</ul>
 	</nav>
+	<figure>
+	<img srcset="banner.png" id="image"></image>
+	</figure>
+
+	<p id="info">
+	Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah <br>
+	Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah <br>
+	Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah <br>
+	Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah <br>
+	</p>
 
 
 	<footer></footer>
 
+
+	<script>
+		// var pageWidth;
+
+		if (matchMedia) {
+			var pageWidth = window.matchMedia("(min-width: 600px)");
+			pageWidth.addListener(WidthChange);
+			WidthChange(pageWidth);
+		}
+
+		function WidthChange(pageWidth){
+			if (pageWidth.matches) {
+				document.getElementById("items").style.display = "block";
+			}
+			else {
+				document.getElementById("items").style.display = "none";
+			}
+		}
+
+		function dropdown() {
+			//pageWidth= window.matchMedia( "(min-width: 600px)" );
+			if (pageWidth.matches) {
+				document.getElementById("items").style.display = "block";
+			}
+			else {
+				var visibility = document.getElementById("items");
+				if(visibility.style.display == "block"){
+					visibility.style.display = "none";
+				}
+				else{
+					visibility.style.display = "block";
+				}
+			}
+
+		}
+	</script>
 </body>
 </html>
