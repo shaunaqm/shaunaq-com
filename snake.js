@@ -1,11 +1,6 @@
-		var size=4000;
+		var size=4096;
 		var rnd = 0.7;
-		var x = [];
-		var y = [];
-		var z = [];
-		var r = [];
-		var g = [];
-		var b = [];
+
 
 		var vertices = [];
 		var colors = [];
@@ -18,17 +13,9 @@
 		var focusVelocity = [0,0,0];
 		var focusAcceleration = [0,0,0];
 
-	//  var vertices = [ 0,0,0, 0.1,-1,-1, -1, 1,-1, -1, -1, 1 ];
-	//   var colors = [ 0,1,0, 1,0,0, 0,0,1, 0,0,0 ];
-	//   var indices = [ 0,1,1, 2,2,3,  ];
+
 
 	for (var i = 0; i<size; i++){
-		x[i] = 0 / 5;
-		y[i] = 0 / 3;
-		z[i] = 0 / 2;
-		r[i] = 0.5;
-		g[i] = 0.5;
-		b[i] = 0.5;
 
 		vertices[3*i] = 0;
 		vertices[3*i+1] = 0;
@@ -43,7 +30,6 @@
 			indices[2*i+1] = i+1;
 
 		}
-
 	}
 
 var m4 = {
@@ -333,7 +319,7 @@ var m4 = {
 
 
 	//----------------------------------------------------------
-	var canvas = document.getElementById('my_Canvas');
+	var canvas = document.getElementById('canvas');
 	gl = canvas.getContext('webgl');
 
 	//----------------------------------------------------------
