@@ -20,8 +20,8 @@
 		grid-template-areas:
 		"header"
 		"p"
-		"video"
 		"table"
+		"video"
 		"footer";
 
 		margin:0px;
@@ -78,36 +78,29 @@
 		height: auto;
 		display: block;
 		margin: auto;
-		margin-top: 89px;
+		margin-top: 34px;
 		background-color: #111111;
 	}
 	table{
 		grid-area: table;
-		background-color: #222222;
+		/*background-color: #000000;*/
 		border-width: 0px;
 		border-collapse: collapse;
-		max-width: 640px;
+		/*max-width: 640px;
 		margin: auto;
-		margin-top: 0px;
+		margin-top: 0px;*/
 	}
 	tr{
-		height: 34px;
+		height: 21px;
 	}
 	td{
 
-		width: 640px;
-		padding-top: 8px;
-		padding-bottom: 8px;
-		padding-left: 3px;
 		font-family: Monaco, Menlo, monospace;
 		color: #DDDDDD;
 		font-size: 11px;
 		font-weight: lighter;
 		letter-spacing: 0px;
 		line-height: 1;
-	}
-	td:hover{
-		background-color: #555555!important;
 	}
 	footer {
 		grid-area: footer;
@@ -130,11 +123,6 @@
 		1 channel 16 bit audio @ 48000 samples/second<br>
 		640x640 24 bit RGB video @ 30 frames/second<br>
 	</p>
-	
-	<video id="video">
-		<source src="2566F380_web.mp4" type="video/mp4">
-		Your browser does not support the video tag.
-	</video>
 	<table>
 		<tr> 
 			<td id="v1" onclick="play(1)">2566F380</td>
@@ -146,6 +134,11 @@
 			<td id="v3" onclick="play(3)">18338E80</td>
 		</tr>
 	</table>
+	<video id="video">
+		<source src="2566F380_web.mp4" type="video/mp4">
+		Your browser does not support the video tag.
+	</video>
+	
 	
 	 <footer>
   		This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
@@ -160,21 +153,12 @@
 		function play(index) {
     		if(index==1){
     			video.src = "2566F380_web.mp4";
-    			v1.style.backgroundColor = '#333333';
-    			v2.style.backgroundColor = '#222222';
-    			v3.style.backgroundColor = '#222222';
     		}
     		if(index==2){
     			video.src = "DC033E00_web.mp4";
-    			v1.style.backgroundColor = '#222222';
-    			v2.style.backgroundColor = '#333333';
-    			v3.style.backgroundColor = '#222222';
     		}
     		if(index==3){
     			video.src = "18338E80_web.mp4";
-    			v1.style.backgroundColor = '#222222';
-    			v2.style.backgroundColor = '#222222';
-    			v3.style.backgroundColor = '#333333';
     		}
     		
     		
