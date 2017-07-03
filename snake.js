@@ -32,34 +32,43 @@
 		}
 	}
 
+var vector = {
+  normalize: function (v) {
+  var length = Math.sqrt(v[0] * v[0] + v[1] * v[1] + v[2] * v[2]);
+    // make sure we don't divide by 0.
+    if (length > 0.00001) {
+      return [v[0] / length, v[1] / length, v[2] / length];
+    } else {
+      return [0, 0, 0];
+    }
+  },
+  cross: function (a, b) {
+    return [a[1] * b[2] - a[2] * b[1],
+            a[2] * b[0] - a[0] * b[2],
+            a[0] * b[1] - a[1] * b[0]];
+  },
+
+  subtractVectors: function (a, b) {
+  return [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+  }
+};
+
 var m4 = {
 
-
-	normalize: function (v) {
-  var length = Math.sqrt(v[0] * v[0] + v[1] * v[1] + v[2] * v[2]);
-	  // make sure we don't divide by 0.
-	  if (length > 0.00001) {
-	    return [v[0] / length, v[1] / length, v[2] / length];
-	  } else {
-	    return [0, 0, 0];
-	  }
-	},
-
-	cross: function (a, b) {
-	  return [a[1] * b[2] - a[2] * b[1],
-	          a[2] * b[0] - a[0] * b[2],
-	          a[0] * b[1] - a[1] * b[0]];
-	},
-
-	subtractVectors: function (a, b) {
-  return [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
-	},
+  identity: function() {
+    return [
+       1,  0,  0,  0,
+       0,  1,  0,  0,
+       0,  0,  1,  0,
+       0,  0,  0,  1,
+    ];
+  },
 
 	lookAt: function(cameraPosition, target, up) {
-    var zAxis = m4.normalize(
-        m4.subtractVectors(cameraPosition, target));
-    var xAxis = m4.cross(up, zAxis);
-    var yAxis = m4.cross(zAxis, xAxis);
+    var zAxis = vector.normalize(
+        vector.subtractVectors(cameraPosition, target));
+    var xAxis = vector.cross(up, zAxis);
+    var yAxis = vector.cross(zAxis, xAxis);
 
     return [
        xAxis[0], xAxis[1], xAxis[2], 0,
@@ -338,20 +347,22 @@ var m4 = {
 
 	//----------------------------------------------------------
 
-	var vertCode = `attribute vec3 position;
+	var vertCode = `
+  attribute vec3 position;
 	uniform mat4 modelViewProjectionMatrix;
 	attribute vec3 color;
 	varying vec3 vColor;
 
 	void main(void) { 
-		gl_Position = modelViewProjectionMatrix*vec4(position, 1.);
+		gl_Position = modelViewProjectionMatrix*vec4(position, 1.0);
 		vColor = color;
 	}`;
 
-	var fragCode = `precision mediump float;
+	var fragCode = `
+  precision mediump float;
 	varying vec3 vColor;
 	void main(void) {
-		gl_FragColor = vec4(vColor, 1.);
+		gl_FragColor = vec4(vColor, 1.0);
 	}`;
 
 	var vertShader = gl.createShader(gl.VERTEX_SHADER);
@@ -441,9 +452,7 @@ var m4 = {
 		focusPosition[1] = clamp(focusPosition[1] + focusVelocity[1], -3,3);
 		focusPosition[2] = clamp(focusPosition[2] + focusVelocity[2], -3,3);
 		
-		var fPosition = [focusPosition[0], focusPosition[1], focusPosition[2]];
-
-		var cameraMatrix = m4.xRotation(0);
+		var cameraMatrix = m4.identity();
   	cameraMatrix = m4.translate(cameraMatrix, eyePosition[0], eyePosition[1], eyePosition[2]);
 
   	var cameraPosition = [
