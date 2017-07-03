@@ -430,6 +430,9 @@ var m4 = {
 		gl.bindBuffer(gl.ARRAY_BUFFER, color_buffer);
 		gl.bufferSubData(gl.ARRAY_BUFFER, 0, new Float32Array(colors));
 
+    canvas.width  = body.clientWidth;
+    canvas.height = body.clientHeight; 
+
 		var projectionMatrix = m4.perspective(2*Math.PI/6, canvas.width/canvas.height, 0, 1000);
 
     eyeAcceleration[0] = rndm()*0.001;
