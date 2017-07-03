@@ -451,21 +451,13 @@ var m4 = {
 		focusVelocity[0] = clamp(focusVelocity[0] + focusAcceleration[0], -0.001,0.001);
 		focusVelocity[1] = clamp(focusVelocity[1] + focusAcceleration[1], -0.001,0.001);
 		focusVelocity[2] = clamp(focusVelocity[2] + focusAcceleration[2], -0.001,0.001);
-		focusPosition[0] = clamp(focusPosition[0] + focusVelocity[0], -3,3);
-		focusPosition[1] = clamp(focusPosition[1] + focusVelocity[1], -3,3);
-		focusPosition[2] = clamp(focusPosition[2] + focusVelocity[2], -3,3);
+		focusPosition[0] = clamp(focusPosition[0] + focusVelocity[0], -2,2);
+		focusPosition[1] = clamp(focusPosition[1] + focusVelocity[1], -2,2);
+		focusPosition[2] = clamp(focusPosition[2] + focusVelocity[2], -2,2);
 		
-		var cameraMatrix = m4.identity();
-  	cameraMatrix = m4.translate(cameraMatrix, eyePosition[0], eyePosition[1], eyePosition[2]);
+  	var up = [0, 1, 0];
 
-  	var cameraPosition = [
-      cameraMatrix[12],
-      cameraMatrix[13],
-      cameraMatrix[14],
-    ];
-    var up = [0, 1, 0];
-
-    cameraMatrix = m4.lookAt(cameraPosition, focusPosition, up);
+    var cameraMatrix = m4.lookAt(eyePosition, focusPosition, up);
     var viewMatrix = m4.inverse(cameraMatrix);
     var viewProjectionMatrix = m4.multiply(projectionMatrix, viewMatrix);
 		gl.uniformMatrix4fv(modelViewProjectionMatrix, false, viewProjectionMatrix);
