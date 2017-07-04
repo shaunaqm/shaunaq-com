@@ -3,7 +3,7 @@
 <head>
 	<meta name="description" content="NA">
 	<meta name="viewport" content="width=device-width, height=device-height">
-	<title>twinkle</title>
+	<title>link</title>
 <style>
 	html{
 		height:100%;
@@ -35,7 +35,7 @@
 <canvas width = "1024" height = "512" id = "canvas"></canvas>
 
 <script>
-	var size=8192;
+	var size=128;
 	var rnd = 0.7;
 
 	var vertexAcceleration = [];
@@ -52,13 +52,13 @@
 	var focusVelocity = [0,0,0];
 	var focusAcceleration = [0,0,0];
 
-	var rLightPolar = 3*Math.PI/2;
+	var rLightPolar = Math.PI/3;
 	var rLightAzimuth = 0;
 	var rLightRadius = 2;
-	var gLightPolar = 3*Math.PI/2;
+	var gLightPolar = Math.PI/3;
 	var gLightAzimuth = Math.PI/2;
 	var gLightRadius = 2;
-	var bLightPolar = 3*Math.PI/2;
+	var bLightPolar = Math.PI/3;
 	var bLightAzimuth = Math.PI;
 	var bLightRadius = 2;
 
@@ -72,9 +72,9 @@
 	  vertexVelocity[3*i+1] = 0;
 	  vertexVelocity[3*i+2] = 0;
 
-	  vertices[3*i] = rndm();
-	  vertices[3*i+1] = rndm();
-	  vertices[3*i+2] = rndm();
+	  vertices[3*i] = Math.sin(i*Math.PI*2/size);
+	  vertices[3*i+1] = Math.cos(i*Math.PI*2/size);
+	  vertices[3*i+2] = 0;
 
 	  normals[3*i] = 0;
 	  normals[3*i+1] = 0;
@@ -84,7 +84,12 @@
 	  colors[3*i+1] = rndm()*0.5 + 0.5;
 	  colors[3*i+2] = rndm()*0.5 + 0.5;
 
-	  indices[i] = i;
+	  if(i<size-1){
+		indices[2*i] = i;
+		indices[2*i+1] = i+1;
+	}
+	indices[2*(size-1)] = size-1;
+	indices[2*(size-1)+1] = 0;
 
 	}
 	var vector = {
@@ -462,7 +467,7 @@
 	  gl_FragColor.x = rlightIntensity;
 	  gl_FragColor.y = glightIntensity;
 	  gl_FragColor.z = blightIntensity;
-	  gl_FragColor.w = 1.0;
+	  gl_FragColor.w = (rlightIntensity+glightIntensity+blightIntensity)/3.0;
 	}`;
 
 	var vertShader = gl.createShader(gl.VERTEX_SHADER);
@@ -546,9 +551,9 @@
 	    var nor = [normals[3*i],normals[3*i+1],normals[3*i+2],1];
 
 	    var normalMatrix = m4.identity();
-	    normalMatrix = m4.xRotate(normalMatrix, rndm()*0.1);
-	    normalMatrix = m4.yRotate(normalMatrix, rndm()*0.1);
-	    normalMatrix = m4.zRotate(normalMatrix, rndm()*0.1);
+	    normalMatrix = m4.xRotate(normalMatrix, rndm()*0.01);
+	    normalMatrix = m4.yRotate(normalMatrix, rndm()*0.01);
+	    normalMatrix = m4.zRotate(normalMatrix, rndm()*0.01);
 
 	    nor = m4.vectorMultiply(nor,normalMatrix);
 
@@ -587,12 +592,12 @@
 	  eyeAcceleration[0] = rndm()*0.0001;
 	  eyeAcceleration[1] = rndm()*0.0001;
 	  eyeAcceleration[2] = rndm()*0.0001;
-	  eyeVelocity[0] = clamp(eyeVelocity[0] + eyeAcceleration[0], -0.01,0.01);
-	  eyeVelocity[1] = clamp(eyeVelocity[1] + eyeAcceleration[1], -0.01,0.01);
-	  eyeVelocity[2] = clamp(eyeVelocity[2] + eyeAcceleration[2], -0.01,0.01);
-	  eyePosition[0] = clamp(eyePosition[0] + eyeVelocity[0], -2,2);
-	  eyePosition[1] = clamp(eyePosition[1] + eyeVelocity[1], -2,2);
-	  eyePosition[2] = clamp(eyePosition[2] + eyeVelocity[2], -2,2);
+	  eyeVelocity[0] = clamp(eyeVelocity[0] + eyeAcceleration[0], -0.001,0.001);
+	  eyeVelocity[1] = clamp(eyeVelocity[1] + eyeAcceleration[1], -0.001,0.001);
+	  eyeVelocity[2] = clamp(eyeVelocity[2] + eyeAcceleration[2], -0.001,0.001);
+	  eyePosition[0] = clamp(eyePosition[0] + eyeVelocity[0], -3,3);
+	  eyePosition[1] = clamp(eyePosition[1] + eyeVelocity[1], -3,3);
+	  eyePosition[2] = clamp(eyePosition[2] + eyeVelocity[2], -3,3);
 
 	  focusAcceleration[0] = rndm()*0.0001;
 	  focusAcceleration[1] = rndm()*0.0001;
@@ -626,7 +631,7 @@
 	  gl.uniform3fv(blightPosition, [bLightRadius*Math.sin(bLightPolar)*Math.cos(bLightAzimuth), bLightRadius*Math.sin(bLightPolar)*Math.sin(bLightAzimuth), bLightRadius*Math.cos(bLightPolar)]);
 
 	  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
-	  gl.drawElements(gl.POINTS, indices.length, gl.UNSIGNED_SHORT, 0);
+	  gl.drawElements(gl.LINES, indices.length, gl.UNSIGNED_SHORT, 0);
 	  window.requestAnimationFrame(animate);
 	}
 
