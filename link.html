@@ -508,7 +508,11 @@
 	gl.useProgram(shaderProgram);
 		
 		//----------------------------------------------------------
-
+	gl.enable(gl.DEPTH_TEST);
+	gl.enable(gl.BLEND);
+	gl.depthFunc(gl.LEQUAL);
+	gl.clearColor(0.0, 0.0, 0.0, 1.0);
+	
 	var time_dt = 0;
 	var animate = function(time) {
 
@@ -570,9 +574,6 @@
 	  canvas.width  = body.clientWidth;
 	  canvas.height = body.clientHeight; 
 
-	  gl.enable(gl.DEPTH_TEST);
-	  gl.depthFunc(gl.LEQUAL);
-	  gl.clearColor(0.0, 0.0, 0.0, 1.0);
 	  gl.clearDepth(1.0);
 	  gl.viewport(0.0, 0.0, canvas.width, canvas.height);
 	  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
