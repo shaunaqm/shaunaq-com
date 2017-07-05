@@ -459,16 +459,16 @@
 	  vec3 glight = normalize(vgLightPosition);
 	  vec3 blight = normalize(vbLightPosition);
 
-	  float rlightIntensity = dot(normal,rlight);
-	  float glightIntensity = dot(normal,glight);
-	  float blightIntensity = dot(normal,blight);
+	  float rlightIntensity = clamp(dot(normal,rlight),0.0,1.0);
+	  float glightIntensity = clamp(dot(normal,glight),0.0,1.0);
+	  float blightIntensity = clamp(dot(normal,blight),0.0,1.0);
 
 
 
 	  gl_FragColor.x = rlightIntensity;
 	  gl_FragColor.y = glightIntensity;
 	  gl_FragColor.z = blightIntensity;
-	  gl_FragColor.w = (rlightIntensity+glightIntensity+blightIntensity)/3.0;
+	  gl_FragColor.w = max(rlightIntensity, max(glightIntensity, blightIntensity));
 	}`;
 
 	var vertShader = gl.createShader(gl.VERTEX_SHADER);
