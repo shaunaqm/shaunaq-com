@@ -81,7 +81,7 @@
 	  normals[3*i+1] = 0;
 	  normals[3*i+2] = 1;
 
-	  colors[4*i] = 0;
+	  colors[4*i] = 1;
 	  colors[4*i+1] = 1;
 	  colors[4*i+2] = 0;
 	  colors[4*i+3] = 1;
@@ -514,8 +514,9 @@
 	gl.disable(gl.DEPTH_TEST);
 	gl.enable(gl.BLEND);
 	// gl.depthFunc(gl.LEQUAL);
+	gl.blendEquation(gl.FUNC_REVERSE_SUBTRACT);
 	gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
-	gl.clearColor(0.0, 0.0, 0.0, 1.0);
+	gl.clearColor(1.0, 1.0, 1.0, 1.0);
 	
 	var time_dt = 0;
 	var animate = function(time) {
@@ -588,11 +589,11 @@
 				
 				lv=lv+6;
 
-				colors[4*size + lc] = 0;
+				colors[4*size + lc] = 1;
 	  			colors[4*size + lc+1] = 0;
 	  			colors[4*size + lc+2] = 1;
 	  			colors[4*size + lc+3] = Math.exp(-2*mag);
-	  			colors[4*size + lc+4] = 0;
+	  			colors[4*size + lc+4] = 1;
 	  			colors[4*size + lc+5] = 0;
 	  			colors[4*size + lc+6] = 1;
 	  			colors[4*size + lc+7] = Math.exp(-2*mag);
@@ -621,17 +622,17 @@
 
 		  			tv=tv+9;
 
-					colors[4*size+4*size*(size-1) + tc] = 1;
-		  			colors[4*size+4*size*(size-1) + tc+1] = 0;
-		  			colors[4*size+4*size*(size-1) + tc+2] = 0;
+					colors[4*size+4*size*(size-1) + tc] = 0;
+		  			colors[4*size+4*size*(size-1) + tc+1] = 1;
+		  			colors[4*size+4*size*(size-1) + tc+2] = 1;
 		  			colors[4*size+4*size*(size-1) + tc+3] = limit-op;
-					colors[4*size+4*size*(size-1) + tc+4] = 1;
-		  			colors[4*size+4*size*(size-1) + tc+5] = 0;
-		  			colors[4*size+4*size*(size-1) + tc+6] = 0;
+					colors[4*size+4*size*(size-1) + tc+4] = 0;
+		  			colors[4*size+4*size*(size-1) + tc+5] = 1;
+		  			colors[4*size+4*size*(size-1) + tc+6] = 1;
 		  			colors[4*size+4*size*(size-1) + tc+7] = limit-op;
-					colors[4*size+4*size*(size-1) + tc+8] = 1;
-		  			colors[4*size+4*size*(size-1) + tc+9] = 0;
-		  			colors[4*size+4*size*(size-1) + tc+10] = 0;
+					colors[4*size+4*size*(size-1) + tc+8] = 0;
+		  			colors[4*size+4*size*(size-1) + tc+9] = 1;
+		  			colors[4*size+4*size*(size-1) + tc+10] = 1;
 		  			colors[4*size+4*size*(size-1) + tc+11] = limit-op;
 
 
