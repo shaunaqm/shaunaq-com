@@ -579,7 +579,7 @@
 	  	for (var j = i+1; j<size; j++){
 	  		
 	  		var mag = magnitude(vertices[3*i]-vertices[3*j],vertices[3*i+1]-vertices[3*j+1],vertices[3*i+2]-vertices[3*j+2]);
-	  		if(mag<2.0){
+	  		if(mag<1.0){
 	  			vertices[3*size+lv] = vertices[3*i];
 	  			vertices[3*size+lv+1] = vertices[3*i+1];
 	  			vertices[3*size+lv+2] = vertices[3*i+2];
@@ -592,11 +592,11 @@
 				colors[4*size + lc] = 1;
 	  			colors[4*size + lc+1] = 0;
 	  			colors[4*size + lc+2] = 1;
-	  			colors[4*size + lc+3] = Math.exp(-2*mag);
+	  			colors[4*size + lc+3] = 1-mag;//Math.exp(-2*mag);
 	  			colors[4*size + lc+4] = 1;
 	  			colors[4*size + lc+5] = 0;
 	  			colors[4*size + lc+6] = 1;
-	  			colors[4*size + lc+7] = Math.exp(-2*mag);
+	  			colors[4*size + lc+7] = 1-mag;//Math.exp(-2*mag);
 
 	  			lc=lc+8;
 	  		}
